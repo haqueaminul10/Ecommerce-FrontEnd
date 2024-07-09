@@ -1,12 +1,13 @@
 import TextField from '@/Components/common/TextField';
 import { useState } from 'react';
-
+import { useRouter } from 'next/router';
 const SignIn = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target as HTMLInputElement;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
@@ -15,6 +16,7 @@ const SignIn = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('formData', formData);
+    router.push('/');
   };
   return (
     <>
